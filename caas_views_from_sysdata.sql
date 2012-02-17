@@ -35,7 +35,7 @@ adv_xid
 as select id - 30000 as adv_xid
 ,substr(created_by,1,30) as created_by
 ,created_date as created_dt
-,(case is_deleted when 0 then '1' else '0' end) as active_flg
+,(case status when 'Active' then '1' else '0' end) as active_flg
 ,version as version
 ,substr(external_id,1,30) as adv_id
 ,substr(external_id,1,30) as adv_parent_id
@@ -72,7 +72,7 @@ ffh_xid
 as select cmp.id - 40000
 ,cmp.created_by
 ,cmp.created_date
-,(case cmp.is_deleted when 0 then '1' else '0' end)
+,(case cmp.status when 'Active' then '1' else '0' end)
 ,cmp.version
 ,cmp.external_id
 ,cmp.company_name
@@ -112,7 +112,7 @@ ntwk_xid
 as select id - 50000
 ,created_by
 ,created_date
-,(case is_deleted when 0 then '1' else '0' end)
+,(case status when 'Active' then '1' else '0' end)
 ,version
 ,network_name
 ,description
@@ -143,7 +143,7 @@ CREATE VIEW CAAS_ADMIN.PROGMR (
 as select id - 60000 
 ,created_by
 ,created_date
-,(case is_deleted when 0 then '1' else '0' end)
+,(case status when 'Active' then '1' else '0' end)
 ,version
 ,external_id
 ,description
